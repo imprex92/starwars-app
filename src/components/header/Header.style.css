@@ -1,0 +1,14 @@
+.PC-Flex-Container{
+	display: flex;
+	background-color: blue;
+	height: 5em;
+	width: 100vw;
+	align-items: center;
+	/* justify-content: space-between; */
+}
+.Flex-Item-1, .Flex-Item-2{
+	color: white;
+	text-decoration: none;
+	margin-left: 2em;
+	font-size: 19px;
+}
