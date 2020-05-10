@@ -14,6 +14,10 @@ function Header() {
 					<span></span>
 					Favorites		
 				</Link>
+				<Link to="/Results" className="Flex-Item-3">
+					<span></span>
+					Results
+				</Link>
 			</div>
 		</header>
 	)
