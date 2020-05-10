@@ -1,0 +1,16 @@
+.peopleSection{
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
+}
+.gridItem{
+	margin: 5px;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid black;
+}
+.gridItem > button{
+	margin-right: 3em;
+}
+.SearchArea{
+	text-align: center;
+}
