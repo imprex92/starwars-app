@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import './CSSfolder/Favorites.css'
 import './CSSfolder/Loader.css'
-import {FavoriteInput} from './FavoriteInput'
 import firebase from './firebase/Firebase'
 const ShowFavResults = ({favResults, loading}) => {
 	const [name, setName] = useState(favResults.name);

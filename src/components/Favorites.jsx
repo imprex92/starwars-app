@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import firebase from './firebase/Firebase'
 import './CSSfolder/Favorites.css'
-import {FavoriteInput} from './FavoriteInput'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 import ShowFavResults from './ShowFavResults'
