@@ -1,19 +1,17 @@
-import app from 'firebase/app'
+import firebase from 'firebase'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDl262UkWjK06xGlCUEa0ZRTY9hDZZ-f4M",
-    authDomain: "luke-firewalker.firebaseapp.com",
-    databaseURL: "https://luke-firewalker.firebaseio.com",
-    projectId: "luke-firewalker",
-    storageBucket: "luke-firewalker.appspot.com",
-    messagingSenderId: "242425381404",
-    appId: "1:242425381404:web:3b98467e2535ec382715d9",
-    measurementId: "G-TTLQ4J44FL"
+const config = {
+    apiKey: "AIzaSyCKRNu2g84uziWfRBWZCb9LIzIt4A25QQY",
+    authDomain: "luke-favfilewalker.firebaseapp.com",
+    databaseURL: "https://luke-favfilewalker.firebaseio.com",
+    projectId: "luke-favfilewalker",
+    storageBucket: "luke-favfilewalker.appspot.com",
+    messagingSenderId: "406443333531",
+    appId: "1:406443333531:web:5a850a89f67fb012d2f33e",
+    measurementId: "G-M5MSSH2VXL"
   };
-  class Firebase {
-	constructor() {
-	  app.initializeApp(firebaseConfig);
-	}
-  }
-   
-  export default Firebase;
+  // Initialize Firebase
+  firebase.initializeApp(config);
+  firebase.analytics();
+
+  export default firebase
