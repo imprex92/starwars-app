@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
+import './CSSfolder/Favorites.css'
+import './CSSfolder/Loader.css'
 import firebase from './firebase/Firebase'
 
 //! listan med favoriter kommer med props
-export const FavoriteInput = ({favorite}) => { 
-	const [name, setName] =React.useState(favorite.name);
+export const FavoriteInput = ({favorite, loading}) => { 
+	const [name, setName] = useState(favorite.name);
 
 	const onUpdate = () => {
 		const db = firebase.firestore()
@@ -17,12 +19,18 @@ export const FavoriteInput = ({favorite}) => {
 		db.collection('peopleResults').doc(person.id).set(person)
 		db.collection('favResults').doc(favorite.id).delete()
 	}
+	if(loading){
+		return 	<div class="loader">
+					<div class="loader-wheel"></div>
+					<div class="loader-text"></div>
+	  			</div>
+	}
 	return (
 		<>
 			{/* onChange: när man ändrar in inputFältet triggas onChange som anropar setName som i sin tur bter ut det gammla namnet mot det nya som finns i Input */}
 			<input type="text" value={name} onChange={ e => {setName(e.target.value)}}/> {/* defaultValue för inputfältet blir värdet på favoriten man vill ändra på */}
 			<button onClick={onUpdate}>Update</button>
-			<button onClick={onDelete(favorite)}>Delete</button>
+			<button onClick={() => onDelete(favorite)}>Delete</button>
 		</>
 	)
 }
