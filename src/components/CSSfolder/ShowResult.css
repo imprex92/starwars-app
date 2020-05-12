@@ -1,4 +1,4 @@
-.peopleSection{
+/* .peopleSection{
 	display: grid;
 	grid-template-columns: 33% 33% 33%;
 }
@@ -10,7 +10,11 @@
 }
 .gridItem > button{
 	margin-right: 3em;
-}
+} */
 .SearchArea{
 	text-align: center;
+}
+.star-span{
+	font-size: 20px;
+	cursor: pointer;
 }
