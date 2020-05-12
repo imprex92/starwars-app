@@ -27,10 +27,12 @@ export const FavoriteInput = ({favorite, loading}) => {
 	}
 	return (
 		<>
-			{/* onChange: när man ändrar in inputFältet triggas onChange som anropar setName som i sin tur bter ut det gammla namnet mot det nya som finns i Input */}
-			<input type="text" value={name} onChange={ e => {setName(e.target.value)}}/> {/* defaultValue för inputfältet blir värdet på favoriten man vill ändra på */}
-			<button onClick={onUpdate}>Update</button>
-			<button onClick={() => onDelete(favorite)}>Delete</button>
+			<form>
+				{/* onChange: när man ändrar in inputFältet triggas onChange som anropar setName som i sin tur bter ut det gammla namnet mot det nya som finns i Input */}
+				<input  type="text" value={name} onChange={ e => {setName(e.target.value)}}/> {/* defaultValue för inputfältet blir värdet på favoriten man vill ändra på */}
+				<button disabled={!name} onClick={onUpdate}>Update</button>
+				<button onClick={() => onDelete(favorite)}>Delete</button>
+			</form>
 		</>
 	)
 }

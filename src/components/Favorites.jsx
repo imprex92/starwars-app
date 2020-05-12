@@ -67,7 +67,7 @@ function Favorites() {
 						<input type="text" placeholder="Enter year of birth" value={newFavoriteYear} onChange={(e) => setnewFavoriteYear(e.target.value)}/>
 						<input type="text" placeholder="Enter HomePlanet" value={newFavoritePlanet} onChange={(e) => setnewFavoritePlanet(e.target.value)}/>
 					</form>
-					<button onClick={onCreate}>Save new favorite</button> <span className="onSaveFav">{brodcastMsg}</span>
+						<button disabled={!newFavoriteName || !newFavoriteYear || !newFavoritePlanet} onClick={onCreate}>Save new favorite</button> <span className="onSaveFav">{brodcastMsg}</span>
 				
 					{/* <div className="peopleSection">
 						{peopleResults.map(person => (
