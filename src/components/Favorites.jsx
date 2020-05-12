@@ -3,7 +3,8 @@ import firebase from './firebase/Firebase'
 import './CSSfolder/Favorites.css'
 import Header from './header/Header'
 import Footer from './footer/Footer'
-import ShowFavResults from './ShowFavResults'
+// import ShowFavResults from './ShowFavResults'
+import {FavoriteInput} from './FavoriteInput'
 
 function Favorites() {
 
@@ -14,18 +15,22 @@ function Favorites() {
 	const [newFavoritePlanet, setnewFavoritePlanet] = useState()
 	const [brodcastMsg, setBrodcastMsg] = useState(null) 
 	useEffect(() => {
-		const fetchData = async () => {
+		
 			setLoading(true)
 			
 			const db = firebase.firestore()
-			const favData = await db.collection('favResults').get()
-			//TODO set localStorage
-			setFavResults(favData.docs.map(doc => ({...doc.data(), id: doc.id})))
+			const unsubscribe = db.collection('favResults').onSnapshot((snapshot) => { 
+				const favoriteData = []
+				snapshot.forEach(doc => favoriteData.push(({...doc.data(), id: doc.id})))
+				setFavResults(favoriteData)
+			})
+
+			// const favData = await db.collection('favResults').get()
+			// setFavResults(favData.docs.map(doc => ({...doc.data(), id: doc.id})))
 			
 			setLoading(false)
 			
-		}
-		fetchData()
+		return unsubscribe //? don't forget to unsubscribe when you use .onSnapshot()
 	}, []) // använd "[]" eftersom vi bara vill anropa useEffect en gång!
 
 	
@@ -82,19 +87,19 @@ function Favorites() {
 						))}
 					</div> */}
 
-					{/* <div className="favSection">	{/* this is the new */}
-					{/* {favResults.map(favorite => (
-							<div key={favorite.name}>
-								<FavoriteInput favorite={favorite} />
+					<div className="favSection">	{/* this is the new */}
+					{favResults.map(favorite => (
+							<div key={favorite.id}>
+								<FavoriteInput favorite={favorite} loading={loading} />
 							</div>
 						))}
-					</div> */} 
+					</div>
 
-						<div>
+						{/* <div>
 							<ShowFavResults favResults={favResults} loading={loading}>
 							
 							</ShowFavResults>
-						</div>
+						</div> */}
 
 				</main>
 			<Footer/>
