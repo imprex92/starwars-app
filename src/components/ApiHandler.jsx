@@ -6,12 +6,22 @@ import Pagination from './pagination/Pagination'
 
 function ApiHandler() {
 	
-
+	const [toShow, setToShow] = useState('Peoples')
 	const [peopleResults, setPeopleResults] = useState([]) //! Standard state är tom array
 	const [planetResults, setPlanetResults] = useState([]) //! Standard state är tom array
 	const [loading, setLoading] = useState(false) //! Texts som visar att sidan laddas när data hämtas från FireStore
 	const [currentPage, setCurrentPage] = useState(1) //! Välj vilken sida som ska visas när sidan renderas
 	const [postPerPage] = useState(10) //! välj antalresultat per sida som ska visas
+	
+	const paginatePeoples = (dataFromChild) => {
+		alert('from child'+ dataFromChild)
+		setToShow(dataFromChild)
+		
+	}
+	const paginatePlanets = (dataFromChild) => {
+		alert('from child'+ dataFromChild)
+		setToShow(dataFromChild)
+	}
 	
 
 	useEffect(() => {
@@ -46,9 +56,22 @@ function ApiHandler() {
 			
 			<ShowResult planetResults={currentPlanetResult}		
 			peopleResults={currentPeopleResults}
-			loading={loading} />		{/* skickar med 3st variabler till child */}
-			<Pagination postPerPage={postPerPage} totalPosts={peopleResults.length} paginate={paginate}/> {/* skickar med 3st variabler till child */} 
+			loading={loading}
+			paginatePlanets={paginatePlanets}
+			paginatePeoples={paginatePeoples} />
+					{/* skickar med 3st variabler till child */}
+
+			<div style={toShow === 'Peoples' ? {display: 'block'} : {display: 'none'}} >
+			<Pagination postPerPage={postPerPage} totalPosts={peopleResults.length} paginate={paginate}
+			/> {/* skickar med 3st variabler till child */} 
+			</div>
+			
 			{/* //TODO skicka med planetResults så vi får pagination även där */}
+			<div style={toShow === 'Planets' ? {display: 'block'} : {display: 'none'}} >			
+				<Pagination postPerPage={postPerPage} totalPosts={planetResults.length} paginate={paginate}
+			/>
+			</div>
+
 		</div>
 	)
 }
