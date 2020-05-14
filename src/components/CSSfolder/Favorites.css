@@ -1,3 +1,6 @@
+h2{
+	text-align: center;
+}
 .peopleSection{
 	border: 1px solid black;
 	border-radius: 10px;
@@ -16,10 +19,47 @@
 	margin: 1em;
 	padding: 1em;
 }
-.onSaveFav{
-	color: blue;
-	font-weight: bold;
-}
+
 input:focus{
 	background-color: rgb(219, 219, 219);
+}
+
+.add-favorite-section{
+	background-color: rgb(0, 0, 0);
+	color: #fff;
+	padding: .7em;
+	margin-left: 1em;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.add-favorite-dropdown{
+	display: flex;
+	flex-direction: column;
+	margin-top: 1.5em;
+	margin-left: 1em;
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 60vw;
+	height: 30vh;
+	padding-left: 0.5em;
+	text-align: center;
+	align-items: center; 
+}
+.form-favorite-radio {
+	display: grid;
+	grid-template-columns: 80px 80px;
+	justify-items: center;
+	margin-bottom: 1em;
+	justify-content: center;
+	align-items: center; 
+}
+.form-favorite-radio > *{
+	cursor: pointer;
+	
+}
+.add-favorite-dropdown > form > p{
+	font-weight: bold;
+	text-decoration: underline;
+	margin-top: 1em;
+	margin-bottom: 0;
 }
