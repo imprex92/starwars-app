@@ -6,18 +6,39 @@ import firebase from './firebase/Firebase'
 //! listan med favoriter kommer med props
 export const FavoriteInput = ({favorite, loading}) => { 
 	const [name, setName] = useState(favorite.name);
+	const [brodcastDelMsg, setBrodcastDelMsg] = useState(null)
+	const [brodcastUpdateMsg, setBrodcastUpdateMsg] = useState(null)
+	const [isOK, setIsOK] = useState(null)
 
-	const onUpdate = () => {
+	const onUpdate = (e) => {
 		const db = firebase.firestore()
+		
 		db.collection('favResults').doc(favorite.id).set({ ...favorite, name }) //! eftersom vi hämtade ID't och assignade det till id så kan vi använda det (favorite.id) för att firestore ska veta vilken som ska uppdateras
+		.catch(error => {
+			console.log('You got an error', error);
+			setIsOK(false)
+			setBrodcastUpdateMsg('Something went wrong, please try again later.', error)
+		})
+		setIsOK(true)
+		setBrodcastUpdateMsg('Successfully Updated!')
+		e.preventDefault();
 	}
-	const onDelete = (person) => {
+	
+	const onDelete = (e, person) => {
 		const db = firebase.firestore()
 		console.log(person.id);
+		console.log(favorite.id);
 		
 		person.isFavorite = false;
-		db.collection('peopleResults').doc(person.id).set(person)
 		db.collection('favResults').doc(favorite.id).delete()
+		.catch(error => {
+			console.log('You got this error', error);	
+			setIsOK(false)
+			setBrodcastDelMsg('Something went wrong, please try again later.', error)
+		  });
+		  setIsOK(true)
+		  setBrodcastDelMsg('Successfully deleted!')
+		  e.preventDefault();
 	}
 	if(loading){
 		return 	<div class="loader">
@@ -30,8 +51,10 @@ export const FavoriteInput = ({favorite, loading}) => {
 			<form>
 				{/* onChange: när man ändrar in inputFältet triggas onChange som anropar setName som i sin tur bter ut det gammla namnet mot det nya som finns i Input */}
 				<input  type="text" value={name} onChange={ e => {setName(e.target.value)}}/> {/* defaultValue för inputfältet blir värdet på favoriten man vill ändra på */}
-				<button disabled={!name} onClick={onUpdate}>Update</button>
-				<button onClick={() => onDelete(favorite)}>Delete</button>
+				<button disabled={!name} onClick={(e) => onUpdate(e)}>Update</button>
+				<button onClick={(e) => onDelete(e, favorite)}>Delete</button>
+				<span className={isOK ? 'brodcast-OK' : 'brodcast-error'}> { brodcastUpdateMsg } </span>
+				<span className={isOK ? 'brodcast-OK' : 'brodcast-error'}> { brodcastDelMsg } </span>
 			</form>
 		</>
 	)
