@@ -3,7 +3,6 @@ import firebase from './firebase/Firebase'
 import ShowResult from './ShowResult'
 import Pagination from './pagination/Pagination'
 
-
 function ApiHandler() {
 	
 	const [toShow, setToShow] = useState('Peoples')
@@ -14,12 +13,9 @@ function ApiHandler() {
 	const [postPerPage] = useState(10) //! välj antalresultat per sida som ska visas
 	
 	const paginatePeoples = (dataFromChild) => {
-		alert('from child'+ dataFromChild)
-		setToShow(dataFromChild)
-		
+		setToShow(dataFromChild)		
 	}
 	const paginatePlanets = (dataFromChild) => {
-		alert('from child'+ dataFromChild)
 		setToShow(dataFromChild)
 	}
 	
@@ -28,14 +24,8 @@ function ApiHandler() {
 		const fetchData = async () => {
 			setLoading(true);
 			const db = firebase.firestore()
-
-			
-
 			const peopleData = await db.collection('peopleResults').get()
-			const planetData = await db.collection('planetResults').get()
-			//TODO filter function här! (Utanför useEffect)
-
-			
+			const planetData = await db.collection('planetResults').get()			
 
 			setPeopleResults(peopleData.docs.map(doc => ({...doc.data(), id: doc.id}))) //! ...doc.data(), id: doc.id gör att man får med ID't som firestore assignade detta objektet. (SNAPSHOT) VIKTIGT!
 			setPlanetResults(planetData.docs.map(doc => ({...doc.data(), id: doc.id})))
@@ -52,8 +42,7 @@ function ApiHandler() {
 	//? Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 	return (
-		<div>
-			
+		<body>			
 			<ShowResult planetResults={currentPlanetResult}		
 			peopleResults={currentPeopleResults}
 			loading={loading}
@@ -66,13 +55,11 @@ function ApiHandler() {
 			/> {/* skickar med 3st variabler till child */} 
 			</div>
 			
-			{/* //TODO skicka med planetResults så vi får pagination även där */}
 			<div style={toShow === 'Planets' ? {display: 'block'} : {display: 'none'}} >			
 				<Pagination postPerPage={postPerPage} totalPosts={planetResults.length} paginate={paginate}
 			/>
-			</div>
-
-		</div>
+			</div>		
+		</body>
 	)
 }
 
