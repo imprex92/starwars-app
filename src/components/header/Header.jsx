@@ -10,13 +10,13 @@ function Header() {
 					<span></span>
 					Home			
 				</Link>
-				<Link to="/Favorites" className="Flex-Item-2">
-					<span></span>
-					Favorites		
-				</Link>
 				<Link to="/Results" className="Flex-Item-3">
 					<span></span>
 					Results
+				</Link>
+				<Link to="/Favorites" className="Flex-Item-2">
+					<span></span>
+					Favorites		
 				</Link>
 			</div>
 		</header>
