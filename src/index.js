@@ -8,12 +8,6 @@ import Favorites from './components/Favorites';
 import ApiHandler from './components/ApiHandler'
 import The404Page from './components/pageNotFound/The404Page';
 
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
 
 const routing = (
   <Router>
