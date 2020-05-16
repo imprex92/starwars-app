@@ -50,11 +50,13 @@ export const FavoriteInput = ({favorite, loading}) => {
 		<>
 			<form>
 				{/* onChange: när man ändrar in inputFältet triggas onChange som anropar setName som i sin tur bter ut det gammla namnet mot det nya som finns i Input */}
+				<span className="brodcast-error" style={name.trim('') ? {display: 'none'} : {display: 'block'}}>Name cannot be empty</span>
 				<input  type="text" value={name} onChange={ e => {setName(e.target.value)}}/> {/* defaultValue för inputfältet blir värdet på favoriten man vill ändra på */}
-				<button disabled={!name} onClick={(e) => onUpdate(e)}>Update</button>
-				<button onClick={(e) => onDelete(e, favorite)}>Delete</button>
+				<button className="update-input-button" disabled={!name.trim('')} onClick={(e) => onUpdate(e)}>Update</button>
+				<button className="delete-input-button" onClick={(e) => onDelete(e, favorite)}>Delete</button>
 				<span className={isOK ? 'brodcast-OK' : 'brodcast-error'}> { brodcastUpdateMsg } </span>
 				<span className={isOK ? 'brodcast-OK' : 'brodcast-error'}> { brodcastDelMsg } </span>
+				
 			</form>
 		</>
 	)

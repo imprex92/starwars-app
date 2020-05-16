@@ -13,8 +13,9 @@ function Favorites() {
 	const [newFavoritePlanet, setnewFavoritePlanet] = useState('')
 	const [brodcastMsg, setBrodcastMsg] = useState(null)
 	const [isOK, setIsOK] = useState(null)
-	const [showSearch, setShowSearch] = useState(false)
+	const [showDropdown, setShowDropdown] = useState(false)
 	const [typeOption, setTypeOption] = useState('person')
+	const [filterBy, setFilterBy] = useState('showAll')
 	var date = new Date( )
 	useEffect(() => {
 		
@@ -31,6 +32,12 @@ function Favorites() {
 		return unsubscribe //? don't forget to unsubscribe when you use .onSnapshot()
 	}, []) // använd "[]" eftersom vi bara vill anropa useEffect en gång!
 
+	let filterByPeople = favResults.filter((favorite) => {
+		return favorite.ofType.includes('person')
+	})
+	let filterByPlanet = favResults.filter((favorite) => {
+		return favorite.ofType.includes('planet')
+	})
 	
 
 	//TODO Validering krävs så användaren inte kan trycka på knappen om inte fälten är ifyllda!
@@ -59,44 +66,42 @@ function Favorites() {
 	}
 
 	return (
-		<body>
+		<main>
 			<Header/>
 				
 					<h2>Your Favorites</h2>
-					
-					{/* <div className="peopleSection">
-						{peopleResults.map(person => (
-							<div key={ person.url }>{ person.name }</div>
-						))}
+					<div className="filter-button-container">
+						<button className="filter-button" onClick={() => setFilterBy('showAll')}>All</button>
+						<button className="filter-button" onClick={() => setFilterBy('showPeople')}>Peoples</button>
+						<button className="filter-button" onClick={() => setFilterBy('showPlanet')}>Planets</button>
 					</div>
-					<div className="planetSection">
-						{ planetResults.map( planet => (
-							<div key={ planet.url }> { planet.name }</div>
-						))}
-					</div> */}
-					{/* <div className="favSection">
-						{ favResults.map( favorite => (
-							<div key={favorite.name}>
-								<FavoriteInput favorite={favorite} />
+
+					<div className="favSection" style={filterBy === 'showPeople' ? {display: 'block'} : {display: 'none'}}>
+						{filterByPeople.map(favorite => (
+							<div key={favorite.id}>
+								<FavoriteInput favorite={favorite} loading={loading} />
 							</div>
 						))}
-					</div> */}
-
-					<div className="favSection">	{/* this is the new */}
-					{favResults.map(favorite => (
+					</div>
+					<div className="favSection" style={filterBy === 'showPlanet' ? {display: 'block'} : {display: 'none'}}>
+						{filterByPlanet.map(favorite => (
 							<div key={favorite.id}>
 								<FavoriteInput favorite={favorite} loading={loading} />
 							</div>
 						))}
 					</div>
 
-						{/* <div>
-							<ShowFavResults favResults={favResults} loading={loading}>
-							
-							</ShowFavResults>
-						</div> */}																						
-						<span className="add-favorite-section" onClick={() => setShowSearch(!showSearch)}>Add a Favorit</span>
-					<div className='add-favorite-dropdown' style={showSearch ? {display: 'block'} : {display: 'none'}}>
+					<div className="favSection" style={filterBy === 'showAll' ? {display: 'block'} : {display: 'none'}}>	
+						{favResults.map(favorite => (
+							<div key={favorite.id}>
+								<FavoriteInput favorite={favorite} loading={loading} />
+							</div>
+						))}
+					</div>
+
+																												
+						<span className="add-favorite-section" onClick={() => setShowDropdown(!showDropdown)}>Add a Favorit</span>
+					<div className='add-favorite-dropdown' style={showDropdown ? {display: 'block'} : {display: 'none'}}>
 						<form className="form-text-input">
 							{/*//! onChange tar värdet som finns i inputfältet*/}
 							<input type="text" placeholder="Enter Name" value={newFavoriteName} onChange={(e) => setNewFavoriteName(e.target.value)}/> 
@@ -115,7 +120,7 @@ function Favorites() {
 						</form>
 					</div>
 				
-		</body>
+		</main>
 	)
 }
 //TODO filter/map favResult depending on isPerson pr isPlanet in different tabs

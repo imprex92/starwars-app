@@ -16,14 +16,23 @@ h2{
 .favSection{
 	border: 1px solid black;
 	border-radius: 10px;
-	margin: 1em;
+	margin: 5px 1em 1em 1em;
 	padding: 1em;
 }
 
 input:focus{
 	background-color: rgb(219, 219, 219);
 }
-
+.filter-button{
+	background-color: rgb(0, 0, 0);
+	color: #fff;
+	padding: .2em 1em .2em 1em;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.update-input-button{
+margin-right: .5em;
+}
 .add-favorite-section{
 	background-color: rgb(0, 0, 0);
 	color: #fff;
@@ -43,7 +52,8 @@ input:focus{
 	height: 30vh;
 	padding-left: 0.5em;
 	text-align: center;
-	align-items: center; 
+	/* align-items: center;  */
+	align-content: center
 }
 .form-favorite-radio {
 	display: grid;
@@ -62,4 +72,10 @@ input:focus{
 	text-decoration: underline;
 	margin-top: 1em;
 	margin-bottom: 0;
+}
+.form-text-input{
+	margin-top: 3.5em;
+}
+.filter-button-container{
+	margin-left: 1em;
 }
