@@ -38,7 +38,7 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 		return person.name.toLowerCase().includes(searchText.toLowerCase()) || person.eye_color.toLowerCase().includes(searchText.toLowerCase()) || person.homeworld.toLowerCase().includes(searchText.toLowerCase())
 	})
 	let filterPlanets = planetResults.filter((planet) => {
-		return planet.name.toLowerCase().includes(searchText.toLowerCase()) || planet.population.includes(searchText) || planet.climate.toLowerCase().includes(searchText.toLowerCase())
+		return planet.name.toLowerCase().includes(searchText.toLowerCase()) || planet.terrain.toLowerCase().includes(searchText.toLowerCase()) || planet.climate.toLowerCase().includes(searchText.toLowerCase())
 	})
 	//TODO Minor changes to loading.css. It's not centered
 	if(loading){
