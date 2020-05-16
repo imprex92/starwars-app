@@ -74,7 +74,11 @@ margin-right: .5em;
 	margin-bottom: 0;
 }
 .form-text-input{
-	margin-top: 3.5em;
+	margin-top: 1.5em;
+	
+}
+.form-text-input > input{
+	margin-right: .5em;
 }
 .filter-button-container{
 	margin-left: 1em;

@@ -12,7 +12,7 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 	const [favorite, setFavorite] = useState(null)
 	const [toShow, setToShow] = useState('Peoples')
 	const [searchText, setSearchText] = useState('')
-//TODO Have a "favorite added" message showing
+
 	const handlePersonFavorite = (person) => {
 		person.isFavorite = true;
 		console.log(person);

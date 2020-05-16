@@ -7,7 +7,7 @@ import {FavoriteInput} from './FavoriteInput'
 function Favorites() {
 
 	const [loading, setLoading] = useState(false)
-	const [favResults, setFavResults] = useState([]) //TODO använd "setLocalStorage" custom hook (behövs ej längre)
+	const [favResults, setFavResults] = useState([]) 
 	const [newFavoriteName, setNewFavoriteName] = useState('')
 	const [newFavoriteYear, setnewFavoriteYear] = useState('')
 	const [newFavoritePlanet, setnewFavoritePlanet] = useState('')
@@ -40,7 +40,7 @@ function Favorites() {
 	})
 	
 
-	//TODO Validering krävs så användaren inte kan trycka på knappen om inte fälten är ifyllda!
+	
 	const onCreate = (e) => {
 		const db = firebase.firestore()
 		db.collection('favResults').add({
@@ -103,6 +103,7 @@ function Favorites() {
 						<span className="add-favorite-section" onClick={() => setShowDropdown(!showDropdown)}>Add a Favorit</span>
 					<div className='add-favorite-dropdown' style={showDropdown ? {display: 'block'} : {display: 'none'}}>
 						<form className="form-text-input">
+						<span className="brodcast-error" style={!newFavoriteName.trim('') || !newFavoriteYear.trim('') || !newFavoritePlanet.trim('') ? {visibility: 'visible'} : {visibility: 'hidden'}}>All fields (3) are required!</span><br/>
 							{/*//! onChange tar värdet som finns i inputfältet*/}
 							<input type="text" placeholder="Enter Name" value={newFavoriteName} onChange={(e) => setNewFavoriteName(e.target.value)}/> 
 							<input type="text" placeholder="Enter year of birth" value={newFavoriteYear} onChange={(e) => setnewFavoriteYear(e.target.value)}/>
@@ -123,6 +124,5 @@ function Favorites() {
 		</main>
 	)
 }
-//TODO filter/map favResult depending on isPerson pr isPlanet in different tabs
 
 export default Favorites
