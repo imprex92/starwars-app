@@ -64,7 +64,12 @@ function Favorites() {
 		});
 		e.preventDefault();
 	}
-
+	if(loading){
+		return 	<div className="loader">
+					<div className="loader-wheel"></div>
+					<div className="loader-text"></div>
+	  			</div>
+	}
 	return (
 		<main>
 			<Header/>
@@ -78,23 +83,33 @@ function Favorites() {
 
 					<div className="favSection" style={filterBy === 'showPeople' ? {display: 'block'} : {display: 'none'}}>
 						{filterByPeople.map(favorite => (
-							<div key={favorite.id}>
-								<FavoriteInput favorite={favorite} loading={loading} />
+							<div className='list-group-item' key={favorite.id}>
+								<span className="list-subgroup-item-1"><FavoriteInput favorite={favorite} loading={loading} /></span>
+								<span className="list-subgroup-item-2" style={favorite.ofType === 'person' ? {display: 'block'} : {display: 'none'}}><strong>Eye color: </strong> {favorite.eye_color} </span>
+								<span className="list-subgroup-item-3" style={favorite.ofType === 'person' ? {display: 'block'} : {display: 'none'}}> <strong>Homeworld: </strong>{favorite.homeworld} </span>
 							</div>
 						))}
 					</div>
 					<div className="favSection" style={filterBy === 'showPlanet' ? {display: 'block'} : {display: 'none'}}>
 						{filterByPlanet.map(favorite => (
-							<div key={favorite.id}>
-								<FavoriteInput favorite={favorite} loading={loading} />
+							<div className='list-group-item' key={favorite.id}>
+								<span className="list-subgroup-item-1" className="list-subgroup-item-1"><FavoriteInput favorite={favorite} loading={loading} /></span>
+								<span className="list-subgroup-item-2" style={favorite.ofType === 'planet' ? {display: 'block'} : {display: 'none'}}><strong>Terrain: </strong> {favorite.terrain} </span>
+								<span className="list-subgroup-item-3" style={favorite.ofType === 'planet' ? {display: 'block'} : {display: 'none'}}> <strong>Climate: </strong>{favorite.climate} </span>
 							</div>
 						))}
 					</div>
 
 					<div className="favSection" style={filterBy === 'showAll' ? {display: 'block'} : {display: 'none'}}>	
 						{favResults.map(favorite => (
-							<div key={favorite.id}>
-								<FavoriteInput favorite={favorite} loading={loading} />
+							<div className='list-group-item' key={favorite.id}>								
+								<span className="list-subgroup-item-1"><FavoriteInput favorite={favorite} loading={loading} /></span>
+
+								<span className="list-subgroup-item-2" style={favorite.ofType === 'person' ? {display: 'block'} : {display: 'none'}}><strong>Eye color: </strong> {favorite.eye_color} </span>
+								<span className="list-subgroup-item-2" style={favorite.ofType === 'planet' ? {display: 'block'} : {display: 'none'}}><strong>Terrain: </strong> {favorite.terrain} </span>
+
+								<span className="list-subgroup-item-3" style={favorite.ofType === 'person' ? {display: 'block'} : {display: 'none'}}> <strong>Homeworld: </strong>{favorite.homeworld} </span>
+								<span className="list-subgroup-item-3" style={favorite.ofType === 'planet' ? {display: 'block'} : {display: 'none'}}> <strong>Climate: </strong>{favorite.climate} </span>
 							</div>
 						))}
 					</div>

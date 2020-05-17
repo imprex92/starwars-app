@@ -2,6 +2,11 @@
 	color: red;
 	font-weight: bold;
 }
+.brodcast-error-input{
+  color: red;
+  position: absolute;
+  left: 2.9rem;
+}
 .brodcast-OK{
 	color: rgb(0, 185, 0);
 	font-weight: bold;

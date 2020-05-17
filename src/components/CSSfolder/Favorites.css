@@ -1,23 +1,11 @@
 h2{
 	text-align: center;
 }
-.peopleSection{
-	border: 1px solid black;
-	border-radius: 10px;
-	margin: 1em;
-	padding: 1em;
-}
-.planetSection{
-	border: 1px solid black;
-	border-radius: 10px;
-	margin: 1em;
-	padding: 1em;
-}
 .favSection{
 	border: 1px solid black;
 	border-radius: 10px;
 	margin: 5px 1em 1em 1em;
-	padding: 1em;
+	padding: .65em;
 }
 
 input:focus{
@@ -31,7 +19,17 @@ input:focus{
 	border-radius: 10px;
 }
 .update-input-button{
-margin-right: .5em;
+	padding-left: 0;
+	padding-right: 3px;
+	background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.delete-input-button{
+	margin-right: 5px;
 }
 .add-favorite-section{
 	background-color: rgb(0, 0, 0);
@@ -82,4 +80,37 @@ margin-right: .5em;
 }
 .filter-button-container{
 	margin-left: 1em;
+}
+.list-group-item{ /*UL*/
+	padding: .75rem .35rem ;
+}
+.list-group-item:nth-child(even){
+	background-color: azure;
+}
+.list-subgroup-item-1, .list-subgroup-item-2, .list-subgroup-item-3{
+	flex: auto;
+	align-self: center;
+}
+.list-subgroup-item-2, .list-subgroup-item-3{
+	margin-left: 5px;
+}
+@media (max-width: 636px){
+	.list-group-item{ /*UL*/
+		flex-wrap: wrap;
+		flex: auto;
+	}
+	.list-subgroup-item-1, .list-subgroup-item-2, .list-subgroup-item-3{
+		flex-basis: 30%;
+		/* flex-basis: 40%; */
+		/* flex-basis: 50%; */
+		/* flex-basis: 60%; */
+	}
+	.add-favorite-dropdown{
+		height: 33vh;
+	}
+}
+@media (max-width: 518px){
+	.add-favorite-dropdown{
+		height: 35vh;
+	}
 }
