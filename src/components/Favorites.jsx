@@ -64,7 +64,7 @@ function Favorites() {
 		});
 		e.preventDefault();
 	}
-	if(!loading){
+	if(loading){
 		return 	<div className="loader">
 					<div className="loader-wheel"></div>
 					<div className="loader-text"></div>
