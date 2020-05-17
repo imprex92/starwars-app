@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
+import firebase from './firebase/Firebase'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 import './CSSfolder/Favorites.css'
 import './CSSfolder/Loader.css'
-import firebase from './firebase/Firebase'
 
 //! listan med favoriter kommer med props
 export const FavoriteInput = ({favorite, loading}) => { 
@@ -40,20 +43,17 @@ export const FavoriteInput = ({favorite, loading}) => {
 		  setBrodcastDelMsg('Successfully deleted!')
 		  e.preventDefault();
 	}
-	if(loading){
-		return 	<div class="loader">
-					<div class="loader-wheel"></div>
-					<div class="loader-text"></div>
-	  			</div>
-	}
 	return (
 		<>
 			<form>
+				<span className="brodcast-error-input" style={name.trim('') ? {display: 'none'} : {display: 'block'}}><small>Name cannot be empty</small></span>
+
+				<FontAwesomeIcon className="delete-input-button" onClick={(e) => onDelete(e, favorite)} icon={ faTrashAlt }/>
+				<button className="update-input-button" disabled={!name.trim('')} onClick={(e) => onUpdate(e)}><FontAwesomeIcon   icon={ faEdit }/></button>
 				{/* onChange: när man ändrar in inputFältet triggas onChange som anropar setName som i sin tur bter ut det gammla namnet mot det nya som finns i Input */}
-				<span className="brodcast-error" style={name.trim('') ? {display: 'none'} : {display: 'block'}}>Name cannot be empty</span>
 				<input  type="text" value={name} onChange={ e => {setName(e.target.value)}}/> {/* defaultValue för inputfältet blir värdet på favoriten man vill ändra på */}
-				<button className="update-input-button" disabled={!name.trim('')} onClick={(e) => onUpdate(e)}>Update</button>
-				<button className="delete-input-button" onClick={(e) => onDelete(e, favorite)}>Delete</button>
+
+
 				<span className={isOK ? 'brodcast-OK' : 'brodcast-error'}> { brodcastUpdateMsg } </span>
 				<span className={isOK ? 'brodcast-OK' : 'brodcast-error'}> { brodcastDelMsg } </span>
 				
@@ -61,43 +61,5 @@ export const FavoriteInput = ({favorite, loading}) => {
 		</>
 	)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function FavoriteInput() {
-// 	return (
-// 		<div>
-// 			<Header/>
-// 			<main>
-// 				<form>
-// 					Name: <br/>
-// 					<input type="text" name="" id="" placeholder="Full name"/>
-// 					<hr/>
-// 					Birth Year: <br/>
-// 					<input type="number" name="" id="" placeholder="Year"/>
-// 					<hr/>
-// 					Homeworld: <br/>
-// 					<input type="text" name="" id="" placeholder="Homeworld"/>
-// 					<button type="submit">Submit</button>
-// 				</form>
-// 			</main>
-// 			<Footer/>
-// 		</div>
-// 	)
-// }
-
-// export default FavoriteInput
 
 
