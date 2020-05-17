@@ -70,7 +70,16 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 					{filterPeoples.map(person => (
 						
 						<li className="list-group-item ml-4 mr-4" key={ person.id }>
-							{ person.name } <br/> {person.eye_color}
+							<span className="list-subgroup-item-1">
+								<strong>Name: </strong>{ person.name }
+							</span>
+							<span className="list-subgroup-item-2">
+								<strong>Eye-color: </strong><span style={{color: person.eye_color}}>{ person.eye_color }</span>
+							</span>
+							<span className="list-subgroup-item-3">
+								<strong>Homeworld: </strong>{ person.homeworld }
+							</span>
+							
 							<span className="star-span" >
 								<FontAwesomeIcon style={favorite === person.name ? {color: 'yellow'} : {color: ''}} onClick={() => {setFavorite(person.name); handlePersonFavorite(person);}} icon={ faStar } />
 							</span>
@@ -82,8 +91,16 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 					
 					{filterPlanets.map(planet => (
 						
-						<li className="list-group-item ml-4" key={ planet.id }>
-							{ planet.name }
+						<li className="list-group-item ml-4 mr-4" key={ planet.id }>
+							<span className="planet-list-subgroup-item-1">
+								<strong>Name: </strong>{ planet.name }
+							</span>
+							<span className="planet-list-subgroup-item-2">
+								<strong>Terrain: </strong>{ planet.terrain }
+							</span>
+							<span className="planet-list-subgroup-item-3">
+								<strong>Climate: </strong>{ planet.climate }
+							</span>
 							<span className="star-span" >
 								<FontAwesomeIcon style={favorite === planet.name ? {color: 'yellow'} : {color: ''}} onClick={() => {setFavorite(planet.name); handlePlanetFavorite(planet);}} icon={ faStar } />
 							</span>
