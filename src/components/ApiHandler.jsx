@@ -42,7 +42,7 @@ function ApiHandler() {
 	//? Change page
 	const paginate = pageNumber => setCurrentPage(pageNumber);
 	return (
-		<body>			
+		<>			
 			<ShowResult planetResults={currentPlanetResult}		
 			peopleResults={currentPeopleResults}
 			loading={loading}
@@ -59,7 +59,7 @@ function ApiHandler() {
 				<Pagination postPerPage={postPerPage} totalPosts={planetResults.length} paginate={paginate}
 			/>
 			</div>		
-		</body>
+		</>
 	)
 }
 
