@@ -93,7 +93,7 @@ function Favorites() {
 					<div className="favSection" style={filterBy === 'showPlanet' ? {display: 'block'} : {display: 'none'}}>
 						{filterByPlanet.map(favorite => (
 							<div className='list-group-item' key={favorite.id}>
-								<span className="list-subgroup-item-1" className="list-subgroup-item-1"><FavoriteInput favorite={favorite} loading={loading} /></span>
+								<span className="list-subgroup-item-1"><FavoriteInput favorite={favorite} loading={loading} /></span>
 								<span className="list-subgroup-item-2" style={favorite.ofType === 'planet' ? {display: 'block'} : {display: 'none'}}><strong>Terrain: </strong> {favorite.terrain} </span>
 								<span className="list-subgroup-item-3" style={favorite.ofType === 'planet' ? {display: 'block'} : {display: 'none'}}> <strong>Climate: </strong>{favorite.climate} </span>
 							</div>
