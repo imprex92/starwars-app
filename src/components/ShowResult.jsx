@@ -49,9 +49,9 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 	}
 
 	return (
-		<div>
+		<>
 			<Header/>
-			<body>
+			<main>
 				{/* Search Area */}
 				<div className="SearchArea mt-3 mb-4">
 					<h3>Search here:</h3>
@@ -107,8 +107,8 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 						</li>
 					))}
 				</ul>
-			</body>			
-		</div>
+			</main>			
+		</>
 	)
 }
 
