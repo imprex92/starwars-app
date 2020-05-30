@@ -1,6 +1,6 @@
 .PC-Flex-Container{
 	display: flex;
-	background-color: blue;
+	background-color: transparent;
 	height: 5em;
 	width: 100vw;
 	align-items: center;
