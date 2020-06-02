@@ -1,9 +1,10 @@
 
 .SearchArea{
 	text-align: center;
+	color: white;
 }
 .search-bar{
-	width: 30vw;
+	width: 40vw;
 }
 .star-span{
 	font-size: 20px;
