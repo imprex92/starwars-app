@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
+import { Route, Switch, HashRouter as Router } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -10,7 +10,7 @@ import The404Page from './components/pageNotFound/The404Page';
 
 
 const routing = (
-  <Router>
+  <Router basename='/'>
 	<Switch>
 	  
 		<Route exact path="/" component={App} />
