@@ -61,8 +61,8 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 				</div>
 					{/* List nav area */}
 				<nav className="list-nav ml-4">
-					<button onClick={() => {setToShow('Peoples'); paginatePeoples('Peoples')}} className="border-bottom-0">Peoples</button>
-					<button onClick={() => {setToShow('Planets'); paginatePlanets('Planets')}} className="border-bottom-0">Planets</button>
+					<button onClick={() => {setToShow('Peoples'); paginatePeoples('Peoples')}} className="border-bottom-0 filter-button">Peoples</button>
+					<button onClick={() => {setToShow('Planets'); paginatePlanets('Planets')}} className="border-bottom-0 filter-button">Planets</button>
 				</nav>
 					{/* Peoples list area */}
 				<ul className='list-group mb-4' style={toShow === 'Peoples' ? {display: 'block'} : {display: 'none'}}>
@@ -74,7 +74,7 @@ const ShowResult = ({peopleResults, planetResults, paginatePlanets, paginatePeop
 								<strong>Name: </strong>{ person.name }
 							</span>
 							<span className="list-subgroup-item-2">
-								<strong>Eye-color: </strong><span style={{color: person.eye_color}}>{ person.eye_color }</span>
+								<strong>Eye-color: </strong><span>{ person.eye_color }</span>
 							</span>
 							<span className="list-subgroup-item-3">
 								<strong>Homeworld: </strong>{ person.homeworld }
