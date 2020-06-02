@@ -3,14 +3,19 @@ import firebase from './firebase/Firebase'
 import './CSSfolder/Favorites.css'
 import Header from './header/Header'
 import {FavoriteInput} from './FavoriteInput'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCreativeCommonsBy} from '@fortawesome/free-brands-svg-icons'
+
 
 function Favorites() {
 
 	const [loading, setLoading] = useState(false)
 	const [favResults, setFavResults] = useState([]) 
 	const [newFavoriteName, setNewFavoriteName] = useState('')
-	const [newFavoriteYear, setnewFavoriteYear] = useState('')
+	const [newFavoriteEyeColor, setnewFavoriteEyeColor] = useState('')
 	const [newFavoritePlanet, setnewFavoritePlanet] = useState('')
+	const [newFavoriteTerrain, setNewFavoriteTerrain] = useState('')
+	const [newFavoriteClimate, setNewFavoriteClimate] = useState('')
 	const [brodcastMsg, setBrodcastMsg] = useState(null)
 	const [isOK, setIsOK] = useState(null)
 	const [showDropdown, setShowDropdown] = useState(false)
@@ -49,8 +54,10 @@ function Favorites() {
 			isFavorite: true,
 			ofType: typeOption,
 			name: newFavoriteName,
-			birth_year: newFavoriteYear,
+			eye_color: newFavoriteEyeColor,
 			homeworld: newFavoritePlanet,
+			terrain: newFavoriteTerrain,
+			climate: newFavoriteClimate
 		})
 		.then(function(docRef) {
 			console.log("Document written with ID: ", docRef.id);
@@ -76,11 +83,11 @@ function Favorites() {
 				
 					<h2>Your Favorites</h2>
 					<div className="filter-button-container">
+					<p><FontAwesomeIcon className='description-isCustom-icon' icon={faCreativeCommonsBy}/> = Custom by you</p>
 						<button className="filter-button" onClick={() => setFilterBy('showAll')}>All</button>
 						<button className="filter-button" onClick={() => setFilterBy('showPeople')}>Peoples</button>
 						<button className="filter-button" onClick={() => setFilterBy('showPlanet')}>Planets</button>
 					</div>
-
 					<div className="favSection" style={filterBy === 'showPeople' ? {display: 'block'} : {display: 'none'}}>
 						{filterByPeople.map(favorite => (
 							<div className='list-group-item' key={favorite.id}>
@@ -110,6 +117,7 @@ function Favorites() {
 
 								<span className="list-subgroup-item-3" style={favorite.ofType === 'person' ? {display: 'block'} : {display: 'none'}}> <strong>Homeworld: </strong>{favorite.homeworld} </span>
 								<span className="list-subgroup-item-3" style={favorite.ofType === 'planet' ? {display: 'block'} : {display: 'none'}}> <strong>Climate: </strong>{favorite.climate} </span>
+								<FontAwesomeIcon className='favorite-isCustom-icon' icon={faCreativeCommonsBy} style={favorite.isCustom ? {display: 'block'} : {display: 'none'}}/>
 							</div>
 						))}
 					</div>
@@ -118,11 +126,21 @@ function Favorites() {
 						<span className="add-favorite-section" onClick={() => setShowDropdown(!showDropdown)}>Add a Favorit</span>
 					<div className='add-favorite-dropdown' style={showDropdown ? {display: 'block'} : {display: 'none'}}>
 						<form className="form-text-input">
-						<span className="brodcast-error" style={!newFavoriteName.trim('') || !newFavoriteYear.trim('') || !newFavoritePlanet.trim('') ? {visibility: 'visible'} : {visibility: 'hidden'}}>All fields (3) are required!</span><br/>
+						
 							{/*//! onChange tar värdet som finns i inputfältet*/}
-							<input type="text" placeholder="Enter Name" value={newFavoriteName} onChange={(e) => setNewFavoriteName(e.target.value)}/> 
-							<input type="text" placeholder="Enter year of birth" value={newFavoriteYear} onChange={(e) => setnewFavoriteYear(e.target.value)}/>
-							<input type="text" placeholder="Enter HomePlanet" value={newFavoritePlanet} onChange={(e) => setnewFavoritePlanet(e.target.value)}/> <br/>
+							<div id='form-planet' style={typeOption === 'planet' ? {display: 'block'} : {display: 'none'}}>
+								<span className="brodcast-error" style={!newFavoriteName.trim('') || !newFavoriteTerrain.trim('') || !newFavoriteClimate.trim('') ? {visibility: 'visible'} : {visibility: 'hidden'}}>All fields (3) are required!</span><br/>
+								<input type="text" placeholder="Enter Name" value={newFavoriteName} onChange={(e) => setNewFavoriteName(e.target.value)}/> 
+								<input type="text" placeholder="Enter terrain" value={newFavoriteTerrain} onChange={(e) => setNewFavoriteTerrain(e.target.value)}/>
+								<input type="text" placeholder="Enter climate" value={newFavoriteClimate} onChange={(e) => setNewFavoriteClimate(e.target.value)}/>
+							</div>
+
+							<div id='form-person' style={typeOption === 'person' ? {display: 'block'} : {display: 'none'}}>
+								<span className="brodcast-error" style={!newFavoriteName.trim('') || !newFavoriteEyeColor.trim('') || !newFavoritePlanet.trim('') ? {visibility: 'visible'} : {visibility: 'hidden'}}>All fields (3) are required!</span><br/>
+								<input type="text" placeholder="Enter Name" value={newFavoriteName} onChange={(e) => setNewFavoriteName(e.target.value)}/> 
+								<input type="text" placeholder="Enter eye color" value={newFavoriteEyeColor} onChange={(e) => setnewFavoriteEyeColor(e.target.value)}/>
+								<input type="text" placeholder="Enter HomePlanet" value={newFavoritePlanet} onChange={(e) => setnewFavoritePlanet(e.target.value)}/>
+							</div> <br/>
 							<p>Is this a person or planet you're adding?</p>
 								<div className="form-favorite-radio">
 									<label htmlFor="person-radio">A Person</label>
@@ -131,7 +149,8 @@ function Favorites() {
 									<input onChange={(e) => setTypeOption(e.target.value)} type="radio" name="ofType" id="planet-radio" value="planet"/>
 								</div>
 								
-							<button type="submit" value="Submit" disabled={!newFavoriteName || !newFavoriteYear || !newFavoritePlanet} onClick={(e) => onCreate(e)}>Save new favorite</button> <br/>
+							<button style={typeOption === 'planet' ? {display: 'none'} : {display: 'block'}} type="submit" value="Submit" disabled={!newFavoriteName.trim('') || !newFavoriteEyeColor.trim('') || !newFavoritePlanet.trim('')} onClick={(e) => onCreate(e)}>Save new favorite</button> 
+							<button style={typeOption === 'planet' ? {display: 'block'} : {display: 'none'}} type="submit" value="Submit" disabled={!newFavoriteName.trim('') || !newFavoriteTerrain.trim('') || !newFavoriteClimate.trim('')} onClick={(e) => onCreate(e)}>Save new favorite</button> <br/>
 							<span className={isOK ? 'brodcast-OK' : 'brodcast-error'}> { brodcastMsg } </span>
 						</form>
 					</div>
