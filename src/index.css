@@ -19,7 +19,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  background-image: linear-gradient(to bottom, #000000, #21171c, #372737, #483b57, #50527c, #4d5b92, #4465a8, #2b70bf, #1f6acb, #2363d5, #355add, #4c4ee2);
 }
 html{
   height: 100vh;
@@ -31,7 +31,8 @@ code {
 }
 
 main{
-  overflow: auto;
+  background-image: linear-gradient(to bottom, #000000, #21171c, #372737, #483b57, #50527c, #4d5b92, #4465a8, #2b70bf, #1f6acb, #2363d5, #355add, #4c4ee2);
+  overflow-x: hidden;
   height: 100vh;
   
 }
