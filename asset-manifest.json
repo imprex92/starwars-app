@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/imprex92/starwars-app/static/css/main.a12adaa1.chunk.css",
-    "main.js": "/imprex92/starwars-app/static/js/main.6435468e.chunk.js",
-    "main.js.map": "/imprex92/starwars-app/static/js/main.6435468e.chunk.js.map",
-    "runtime-main.js": "/imprex92/starwars-app/static/js/runtime-main.1f6cdad2.js",
-    "runtime-main.js.map": "/imprex92/starwars-app/static/js/runtime-main.1f6cdad2.js.map",
-    "static/js/2.7dacb62b.chunk.js": "/imprex92/starwars-app/static/js/2.7dacb62b.chunk.js",
-    "static/js/2.7dacb62b.chunk.js.map": "/imprex92/starwars-app/static/js/2.7dacb62b.chunk.js.map",
-    "index.html": "/imprex92/starwars-app/index.html",
-    "precache-manifest.d0e286e0ed05a2a6209018fd14a617d8.js": "/imprex92/starwars-app/precache-manifest.d0e286e0ed05a2a6209018fd14a617d8.js",
-    "service-worker.js": "/imprex92/starwars-app/service-worker.js",
-    "static/css/main.a12adaa1.chunk.css.map": "/imprex92/starwars-app/static/css/main.a12adaa1.chunk.css.map",
-    "static/js/2.7dacb62b.chunk.js.LICENSE.txt": "/imprex92/starwars-app/static/js/2.7dacb62b.chunk.js.LICENSE.txt"
+    "main.css": "/starwars-app/static/css/main.a12adaa1.chunk.css",
+    "main.js": "/starwars-app/static/js/main.f1d01191.chunk.js",
+    "main.js.map": "/starwars-app/static/js/main.f1d01191.chunk.js.map",
+    "runtime-main.js": "/starwars-app/static/js/runtime-main.653f86f6.js",
+    "runtime-main.js.map": "/starwars-app/static/js/runtime-main.653f86f6.js.map",
+    "static/js/2.b3c8f310.chunk.js": "/starwars-app/static/js/2.b3c8f310.chunk.js",
+    "static/js/2.b3c8f310.chunk.js.map": "/starwars-app/static/js/2.b3c8f310.chunk.js.map",
+    "index.html": "/starwars-app/index.html",
+    "precache-manifest.2af373cb9be280f5438433cb9272689f.js": "/starwars-app/precache-manifest.2af373cb9be280f5438433cb9272689f.js",
+    "service-worker.js": "/starwars-app/service-worker.js",
+    "static/css/main.a12adaa1.chunk.css.map": "/starwars-app/static/css/main.a12adaa1.chunk.css.map",
+    "static/js/2.b3c8f310.chunk.js.LICENSE.txt": "/starwars-app/static/js/2.b3c8f310.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.1f6cdad2.js",
-    "static/js/2.7dacb62b.chunk.js",
+    "static/js/runtime-main.653f86f6.js",
+    "static/js/2.b3c8f310.chunk.js",
     "static/css/main.a12adaa1.chunk.css",
-    "static/js/main.6435468e.chunk.js"
+    "static/js/main.f1d01191.chunk.js"
   ]
 }
